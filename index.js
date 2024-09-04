@@ -55,28 +55,28 @@ async function run() {
       res.send(result);
       console.log(result);
     })
-    // // for update data 
-    // app.put(`/arts/:id`, async(req, res)=>{
-    //   const id = req.params.id;
-    //   const filter = { _id : new ObjectId(id)};
-    //   const options = { upsert: true };
-    //   const update = req.body;
-    //   const art = {
-    //     $set: {
-    //       image_url:update.image_url,
-    //       item_name:update.item_name,
-    //       subcategory_Name:update.subcategory_Name,
-    //       price:update.price,
-    //       rating:update.rating,
-    //       stockStatus:update.stockStatus,
-    //       description:update.description,
-    //       customization:update.customization,
-    //       // processing_time:update.processing_time
-    //     }
-    //   }
-    //   const result =  await artCollections.updateOne(filter, art, options);
-    //   res.send(result)
-    // })
+    // for update data 
+    app.put(`/arts/:id`, async(req, res)=>{
+      const id = req.params.id;
+      const filter = { _id : new ObjectId(id)};
+      const options = { upsert: true };
+      const update = req.body;
+      const art = {
+        $set: {
+          image_url:update.image_url,
+          item_name:update.item_name,
+          subcategory_Name:update.subcategory_Name,
+          price:update.price,
+          rating:update.rating,
+          stockStatus:update.stockStatus,
+          description:update.description,
+          customization:update.customization,
+          // processing_time:update.processing_time
+        }
+      }
+      const result =  await artCollections.updateOne(filter, art, options);
+      res.send(result)
+    })
     // coding end here
 
 
