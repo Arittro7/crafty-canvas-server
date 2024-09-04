@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 5000;
@@ -33,50 +33,50 @@ async function run() {
         const result = await cursor.toArray()
         res.send(result)
     })
-    // for single data 
-    app.get('/arts/:id', async (req, res) => {
-      const id = req.params.id
-      const query = { _id : new ObjectId(id)}
-      const result = await artCollections.findOne(query);
-      res.send(result);
-      console.log(result);
-    })
-    //for create data 
-    app.post('/arts', async(req, res)=>{
-        const newArts = req.body;
-        const result = await artCollections.insertOne(newArts);
-        res.send(result);
-    })
-    // fot delete data
-    app.delete(`/arts/:id`, async(req, res) => {
-      const id = req.params.id;
-      const query = { _id : new ObjectId(id)};
-      const result = await artCollections.deleteOne(query);
-      res.send(result);
-      console.log(result);
-    })
-    // for update data 
-    app.put(`/arts/:id`, async(req, res)=>{
-      const id = req.params.id;
-      const filter = { _id : new ObjectId(id)};
-      const options = { upsert: true };
-      const update = req.body;
-      const art = {
-        $set: {
-          image_url:update.image_url,
-          item_name:update.item_name,
-          subcategory_Name:update.subcategory_Name,
-          price:update.price,
-          rating:update.rating,
-          stockStatus:update.stockStatus,
-          description:update.description,
-          processing_time:update.processing_time,
-          customization:update.customization
-        }
-      }
-      const result =  await artCollections.updateOne(filter, art, options);
-      res.send(result)
-    })
+    // // for single data 
+    // app.get('/arts/:id', async (req, res) => {
+    //   const id = req.params.id
+    //   const query = { _id : new ObjectId(id)}
+    //   const result = await artCollections.findOne(query);
+    //   res.send(result);
+    //   console.log(result);
+    // })
+    // //for create data 
+    // app.post('/arts', async(req, res)=>{
+    //     const newArts = req.body;
+    //     const result = await artCollections.insertOne(newArts);
+    //     res.send(result);
+    // })
+    // // fot delete data
+    // app.delete(`/arts/:id`, async(req, res) => {
+    //   const id = req.params.id;
+    //   const query = { _id : new ObjectId(id)};
+    //   const result = await artCollections.deleteOne(query);
+    //   res.send(result);
+    //   console.log(result);
+    // })
+    // // for update data 
+    // app.put(`/arts/:id`, async(req, res)=>{
+    //   const id = req.params.id;
+    //   const filter = { _id : new ObjectId(id)};
+    //   const options = { upsert: true };
+    //   const update = req.body;
+    //   const art = {
+    //     $set: {
+    //       image_url:update.image_url,
+    //       item_name:update.item_name,
+    //       subcategory_Name:update.subcategory_Name,
+    //       price:update.price,
+    //       rating:update.rating,
+    //       stockStatus:update.stockStatus,
+    //       description:update.description,
+    //       customization:update.customization,
+    //       // processing_time:update.processing_time
+    //     }
+    //   }
+    //   const result =  await artCollections.updateOne(filter, art, options);
+    //   res.send(result)
+    // })
     // coding end here
 
 
