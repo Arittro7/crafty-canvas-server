@@ -33,14 +33,14 @@ async function run() {
         const result = await cursor.toArray()
         res.send(result)
     })
-    // // for single data 
-    // app.get('/arts/:id', async (req, res) => {
-    //   const id = req.params.id
-    //   const query = { _id : new ObjectId(id)}
-    //   const result = await artCollections.findOne(query);
-    //   res.send(result);
-    //   console.log(result);
-    // })
+    // for single data 
+    app.get('/arts/:id', async (req, res) => {
+      const id = req.params.id
+      const query = { _id : new ObjectId(id)}
+      const result = await artCollections.findOne(query);
+      res.send(result);
+      console.log(result);
+    })
     // //for create data 
     // app.post('/arts', async(req, res)=>{
     //     const newArts = req.body;
