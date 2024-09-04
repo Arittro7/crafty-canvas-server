@@ -47,14 +47,14 @@ async function run() {
         const result = await artCollections.insertOne(newArts);
         res.send(result);
     })
-    // // fot delete data
-    // app.delete(`/arts/:id`, async(req, res) => {
-    //   const id = req.params.id;
-    //   const query = { _id : new ObjectId(id)};
-    //   const result = await artCollections.deleteOne(query);
-    //   res.send(result);
-    //   console.log(result);
-    // })
+    // fot delete data
+    app.delete(`/arts/:id`, async(req, res) => {
+      const id = req.params.id;
+      const query = { _id : new ObjectId(id)};
+      const result = await artCollections.deleteOne(query);
+      res.send(result);
+      console.log(result);
+    })
     // // for update data 
     // app.put(`/arts/:id`, async(req, res)=>{
     //   const id = req.params.id;
