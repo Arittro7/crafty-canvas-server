@@ -28,11 +28,11 @@ async function run() {
     const artCollections = client.db('ArtsDb').collection('arts');
 
     // for read data 
-    // app.get('/arts', async(req, res)=>{
-    //     const cursor = artCollections.find()
-    //     const result = await cursor.toArray()
-    //     res.send(result)
-    // })
+    app.get('/arts', async(req, res)=>{
+        const cursor = artCollections.find()
+        const result = await cursor.toArray()
+        res.send(result)
+    })
     // for single data 
     app.get('/arts/:id', async (req, res) => {
       const id = req.params.id
