@@ -41,12 +41,12 @@ async function run() {
       res.send(result);
       console.log(result);
     })
-    // //for create data 
-    // app.post('/arts', async(req, res)=>{
-    //     const newArts = req.body;
-    //     const result = await artCollections.insertOne(newArts);
-    //     res.send(result);
-    // })
+    //for create data 
+    app.post('/arts', async(req, res)=>{
+        const newArts = req.body;
+        const result = await artCollections.insertOne(newArts);
+        res.send(result);
+    })
     // // fot delete data
     // app.delete(`/arts/:id`, async(req, res) => {
     //   const id = req.params.id;
