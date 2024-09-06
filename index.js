@@ -8,6 +8,7 @@ const port = process.env.PORT || 5000;
 
 // middleware
 app.use(cors());
+// app.use(cors({ origin: 'https://crafty-canvas-c8b4f.web.app' }));
 app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.wv413.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
@@ -71,7 +72,7 @@ async function run() {
           stockStatus:update.stockStatus,
           description:update.description,
           customization:update.customization,
-          // processing_time:update.processing_time
+          processing_time:update.processing_time
         }
       }
       const result =  await artCollections.updateOne(filter, art, options);
